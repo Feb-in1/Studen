@@ -18,7 +18,7 @@ const Navbar = () => {
               <Link class="nav-link active" aria-current="page" to="/">Add Student</Link>
               <Link class="nav-link" to="/search">Search Student</Link>
               <Link class="nav-link" to="/delete">Delete Student</Link>
-              <Link class="nav-link" to="ViewAll">View All Students</Link>
+              <Link class="nav-link" to="/ViewAll">View All Students</Link>
             </div>
           </div>
         </div>

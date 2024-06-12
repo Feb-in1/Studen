@@ -1,23 +1,27 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Navbar from './Navbar'
+import axios from 'axios'
 
 const ViewAll = () => {
 
-    const [data, changeData] = useState(
-
-        [
-            { "name": "febin", "admNo": 378, "rollNo": 51 },
-            { "name": "ebin", "admNo": 379, "rollNo": 47 },
-            { "name": "aby", "admNo": 118, "rollNo": 2 }
-
-
-        ]
-
-    )
+    const [data, changeData] = useState([])
 
 
 
-
+const fetchData=()=>{
+    axios.get("http://localhost:8080/ViewAll").then(
+        (response)=>{
+            console.log(response.data)
+            changeData(response.data)
+        }
+    ).catch(
+        (error)=>{
+            console.log()
+        }
+    ).finally()
+    
+}
+useEffect(() => { fetchData() }, [])
     return (
         <div>
 
@@ -40,8 +44,8 @@ const ViewAll = () => {
                                             <img src="https://png.pngtree.com/png-clipart/20220615/original/pngtree-kid-student-back-to-school-in-uniform-wear-backpack-png-image_8043401.png" class="card-img-top" alt="..." />
                                             <div class="card-body">
                                                 <h5 class="card-title">{value.name}</h5>
-                                                <p class="card-text">Roll No: {value.rollNo}</p>
-                                                <p class="card-text">Admn No: {value.admNo}</p>
+                                                <p class="card-text">Roll No: {value.rno}</p>
+                                                <p class="card-text">Admn No: {value.admno}</p>
                                                 <a href="#" class="btn btn-primary">Details</a>
                                             </div>
                                         </div>
